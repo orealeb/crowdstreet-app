@@ -59,19 +59,19 @@ describe('AppComponent', () => {
     let numAsserts = 1;
     records.forEach(record => {
       expect(record).toHaveProperty('name');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
       expect(record).toHaveProperty('start');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
       expect(record).toHaveProperty('increment');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
       expect(record).toHaveProperty('width');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
       expect(record).toHaveProperty('selectedDir');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
       expect(record).toHaveProperty('directions');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
       expect(record).toHaveProperty('data');
-      expect.assertions(numAsserts++);  // true
+      expect.assertions(numAsserts++);
     });
   })
 

@@ -1,0 +1,54 @@
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid lightgray;
+  }
+
+  .move_right {
+    float: right;
+  }
+
+  .float_div {
+    margin-right: 1%;
+    float: left;
+    min-width: 10%;
+  }
+
+  .display_inline {
+    display: inline-block;
+
+  }
+
+  .adjust_table {
+    margin: 2%;
+    width: calc(100% - 4%);
+  }
+
+  div[hidden] {
+    display: none;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .responsive_BLUE {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 920px) {
+    .responsive_GREEN {
+      clear: both;
+    }
+  }
+  
+  .error {
+    padding: 1px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+  }

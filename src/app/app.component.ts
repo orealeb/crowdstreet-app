@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Table }    from'../app/table';
 import { TABLES } from '../app/mock-tables';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,8 +16,7 @@ export class AppComponent  {
 
   title = 'crowdstreet-app';
   hideForm : boolean = true;
-
-
+  isValidFormSubmitted: boolean = false;
 
   cancel(){
     //this.resetFields();
@@ -27,6 +27,15 @@ export class AppComponent  {
     this.hideForm = false;
   }
 
+  onFormSubmit(form: NgForm) {
+    this.isValidFormSubmitted = false;
+    if (form.invalid) {
+       return;
+    }
+    this.isValidFormSubmitted = true;
+    this.submit(this.currTable.start, this.currTable.increment, this.currTable.max, this.currTable.width, this.currTable.selectedDir, this.currTable.name);
+  }
+  
   submit(start: number, increment: number, max: number, width: number, dir: string, tableName : string) { 
  
     let beginRow = 0;
