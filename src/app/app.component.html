@@ -40,10 +40,20 @@
       display: none;
     }
   }
+
   @media screen and (max-width: 920px) {
     .responsive_GREEN {
-      clear:both;
+      clear: both;
     }
+  }
+
+  /* The alert message box */
+  .alert {
+    padding: 1px;
+    background-color: #f44336;
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
   }
 </style>
 
@@ -63,41 +73,67 @@
 
 <div class="container display_inline" [hidden]="hideForm">
   <p>Table: <span [ngStyle]="{'color': currTable.name}">{{currTable.name}}</span> </p>
-  <form>
+  <form [formGroup]="inputForm">
     <div class="form-group">
       <label for="start">N = </label>
-      <input type="number" class="form-control" id="start" [(ngModel)]="currTable.start" name="start" required
-        minlength="0">
+      <input type="number" class="form-control" id="start" formControlName="start">
+      <div *ngIf="start.errors" [ngClass]="'error'">
+        <div *ngIf="start.errors.required">
+          N required.
+        </div>
+        <div *ngIf="start.errors.min">
+          N must be greater than 0
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="increment">X = </label>
-      <input type="number" class="form-control" id="increment" [(ngModel)]="currTable.increment" name="increment"
-        required minlength="1">
+      <input type="number" class="form-control" id="increment" formControlName="increment">
+      <div *ngIf="increment.errors" [ngClass]="'error'">
+        <div *ngIf="increment.errors.required">
+          X required.
+        </div>
+        <div *ngIf="increment.errors.min">
+          X must be greater than 0
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="max">M = </label>
-      <input type="number" class="form-control" id="increment" [(ngModel)]="currTable.max" name="max" required
-        minlength="0">
+      <input type="number" class="form-control" id="max" formControlName="max">
+      <div *ngIf="max.errors" [ngClass]="'error'">
+        <div *ngIf="max.errors.required">
+          M required.
+        </div>
+        <div *ngIf="max.errors.min">
+          M must be greater than 0
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="width">W = </label>
-      <input type="number" class="form-control" id="width" [(ngModel)]="currTable.width" name="width" required
-        minlength="0"> %
+      <input type="number" class="form-control" id="width" formControlName="width"><span>%</span>
+      <div *ngIf="width.errors" [ngClass]="'error'">
+        <div *ngIf="width.errors.required">
+          W required.
+        </div>
+        <div *ngIf="width.errors.min">
+          W must be greater than 0
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="increment">D = </label>
-      <select class="form-control" id="directions" [(ngModel)]="currTable.selectedDir" name="selectedDir" required>
+      <select class="form-control" id="directions" formControlName="selectedDir">
         <option *ngFor="let dir of currTable.directions" [value]=dir>{{dir}}</option>
       </select>
     </div>
 
-    <button
-      (click)="submit(currTable.start, currTable.increment, currTable.max, currTable.width, currTable.selectedDir, currTable.name)"
-      type="submit">Submit</button>
+    <button (click)="onFormSubmit()" type="submit">Submit</button>
     <button (click)="cancel()">Cancel</button>
   </form>
 </div>

@@ -75,7 +75,7 @@ describe('AppComponent', () => {
     });
   })
 
-  
+
   describe('Submit with default values', () => {
     let component: AppComponent;
     let fixture: ComponentFixture<AppComponent>;
@@ -89,12 +89,12 @@ describe('AppComponent', () => {
 
     it('should create table with two rows and five columns with all zeroes', () => {
       expect(component.currTable.data)
-      .toEqual([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]);
+        .toEqual([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]);
     });
 
     it('should have a width of 20%', () => {
       expect(component.currTable.width)
-      .toBe(20);
+        .toBe(20);
     });
   });
 
@@ -111,12 +111,12 @@ describe('AppComponent', () => {
 
     it('should create table with start of 3, incremenent of 2, and max of 18', () => {
       expect(component.currTable.data)
-      .toEqual([undefined, [13, 15, 17, undefined, undefined], [3, 5, 7, 9, 11]]);
+        .toEqual([undefined, [13, 15, 17, undefined, undefined], [3, 5, 7, 9, 11]]);
     });
 
     it('should have a width of 40%', () => {
       expect(component.currTable.width)
-      .toBe(40);
+        .toBe(40);
     });
   });
 
